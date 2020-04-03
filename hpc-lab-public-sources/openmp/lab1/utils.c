@@ -42,6 +42,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <assert.h>
+#include <omp.h>
 
 #include "utils.h"
 
@@ -133,7 +134,10 @@ void print_stats()
     printf("%.4f ms\t%.4f ms\t%.4f ms\t%.4f\n", (double)average, (double)min / 1E6, (double)max / 1E6, (double)std_deviation);
     
     FILE *file;
-    file = fopen("stats.txt", "w");
+    int n_threads;
+
+    file = fopen("stats.txt", "a");
+    fprintf(file, "#threads: %d\n", NTHREADS);
     fprintf(file, "AvgTime\tMinTime\tMaxTime\tStdDev\n");
     fprintf(file, "%.4f ms\t%.4f ms\t%.4f ms\t%.4f\n", (double)average, (double)min / 1E6, (double)max / 1E6, (double)std_deviation);
     fclose(file);
