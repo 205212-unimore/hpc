@@ -42,6 +42,8 @@
 #include <math.h>
 #include <stdio.h>
 #include <assert.h>
+#include <iostream>
+#include <fstream>
 
 #include "utils.h"
 
@@ -131,6 +133,12 @@ void print_stats()
 
     printf("AvgTime\tMinTime\tMaxTime\tStdDev\n");
     printf("%.4f ms\t%.4f ms\t%.4f ms\t%.4f\n", (double)average, (double)min / 1E6, (double)max / 1E6, (double)std_deviation);
+    
+    ofstream myfile;
+    myfile.open ("stats.txt");
+    myfile << "AvgTime\tMinTime\tMaxTime\tStdDev\n";
+    myfile << (double)average<<" ms\t"<<(double)min / 1E6<<" ms\t"<<(double)max / 1E6<<" ms\t"<<(double)std_deviation<<"\n";
+    myfile.close();
 }
 
 #if defined(__GNUC__)
