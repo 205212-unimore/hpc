@@ -59,4 +59,21 @@ void exercise()
         work(1 << 10);
         DEBUG_PRINT("%hu: Done with iteration %hu!\n", omp_get_thread_num(), i);
     }
+    
+    /*
+    int n_it = 1<<10;
+    //int n_it = 1<<20
+    int chunk = ((n_it)/NTHREADS);
+    //int chunk = 1;
+    int w = 1<<10;
+    //int w = 10;
+    #pragma omp parallel for num_threads(NTHREADS) schedule(dynamic,chunk)
+    for (int i = 0; i < n_it; i++)
+    {
+        DEBUG_PRINT("%hu: I am executing iteration %hu!\n", omp_get_thread_num(), i);
+        work(w);
+        DEBUG_PRINT("%hu: Done with iteration %hu!\n", omp_get_thread_num(), i);
+    }
+    */
+    
 }

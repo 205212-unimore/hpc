@@ -50,9 +50,21 @@
  */
 void exercise()
 {
+	
+	#pragma omp parallel for schedule(static) num_threads(4)
     for (int i = 0; i < 128; i++)
     {
         DEBUG_PRINT("%hu: I am executing iteration %hu!\n", omp_get_thread_num(), i);
         work((i >> 2) * 1 << 20);
     }
+    
+    /*
+    int chunk=32;
+	#pragma omp parallel for schedule(dynamic, chunk) num_threads(4)
+    for (int i = 0; i < 128; i++)
+    {
+        DEBUG_PRINT("%hu: I am executing iteration %hu!\n", omp_get_thread_num(), i);
+        work((i >> 2) * 1 << 20);
+    }
+    */
 }

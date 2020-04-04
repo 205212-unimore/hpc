@@ -137,9 +137,7 @@ void print_stats()
     int n_threads;
 
     file = fopen("stats.txt", "a");
-    fprintf(file, "#threads: %d\n", NTHREADS);
-    fprintf(file, "AvgTime\tMinTime\tMaxTime\tStdDev\n");
-    fprintf(file, "%.4f ms\t%.4f ms\t%.4f ms\t%.4f\n", (double)average, (double)min / 1E6, (double)max / 1E6, (double)std_deviation);
+    fprintf(file, "%.4f\n", (double)min / 1E6;
     fclose(file);
 }
 
